@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04
+      author: Andrew
+      changes:
+        - addColumn:
+            tableName: CLIENTE
+            columns:
+              - column:
+                  name: RETORNO
+                  type: INT

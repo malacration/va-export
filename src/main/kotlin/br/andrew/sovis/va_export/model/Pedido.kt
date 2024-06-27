@@ -1,6 +1,6 @@
 package br.andrew.sovis.va_export.model
 
-import br.andrew.sovis.va_export.model.sap.RetornoSap
+import br.andrew.sovis.va_export.model.sap.PedidoRetorno
 import jakarta.persistence.*
 import java.sql.Time
 import java.util.*
@@ -80,14 +80,14 @@ class Pedido {
     @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
     var itensPedido: List<ItemPedido>? = null
 
-    fun marcarEnviado(retornoSap: RetornoSap): Pedido {
-        idPedidoErp = retornoSap.DocNum
+    fun marcarEnviado(pedidoRetorno: PedidoRetorno): Pedido {
+        idPedidoErp = pedidoRetorno.DocNum
         return this
     }
 
-    fun RetornoSap() : RetornoSap? {
+    fun RetornoSap() : PedidoRetorno? {
         if(idPedidoErp != null && !hasError())
-            return RetornoSap(idPedidoErp!!)
+            return PedidoRetorno(idPedidoErp!!)
         else
             return null
     }
